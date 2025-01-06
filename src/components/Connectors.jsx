@@ -1,6 +1,25 @@
-const Connectors = () => {
+import PropTypes from "prop-types";
+const Connectors = ({ scrollX }) => {
+  // Calculate path based on scroll position
+  const calculatePath = () => {
+    const baseX = 77;
+    const startY = 0;
+    const midY = 72.2273;
+    const endY = 159.363;
+    
+    // Make the path more dynamic based on scroll
+    const flexOffset = Math.sin(scrollX / 200) * 20; // Creates a wave effect
+    const controlPoint1X = baseX + flexOffset;
+    const controlPoint2X = 9 + flexOffset;
+    
+    return `M${baseX} ${startY} 
+            C${controlPoint1X} ${midY/2}, ${controlPoint1X} ${midY}, ${baseX} ${midY} 
+            H29 
+            C${controlPoint2X} ${midY}, ${controlPoint2X} ${(midY + endY)/2}, 9 ${endY}`;
+  };
+
   return (
-    <div>
+    <div className="connector">
       <svg
         width="78"
         height="177"
@@ -19,9 +38,13 @@ const Connectors = () => {
         </defs>
 
         <path
-          d="M77 0V72.2273C77 83.273 68.0457 92.2272 57 92.2272H29C17.9543 92.2272 9 101.182 9 112.227V159.363"
+          d={calculatePath()}
           stroke="#007BFF"
           strokeWidth="1.5"
+          fill="none"
+          style={{
+            transition: "d 0.3s ease-out",
+          }}
         />
         <ellipse
           cx="8.92562"
@@ -35,5 +58,8 @@ const Connectors = () => {
     </div>
   );
 };
+Connectors.propTypes = {
+  scrollX: PropTypes.string.isRequired
+}
 
 export default Connectors;

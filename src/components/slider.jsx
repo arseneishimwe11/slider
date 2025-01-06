@@ -38,11 +38,74 @@ const SliderComponent = () => {
         '"The culture here is both supportive and stimulating, with talented professionals who push boundaries and share insights. A strong focus on innovation ensures constant growth and staying ahead of industry trends."',
       image: AvatarImage,
     },
+    {
+      name: "John Doe",
+      role: "Machine Learning Specialist",
+      quote:
+        '"The culture here is both supportive and stimulating, with talented professionals who push boundaries and share insights. A strong focus on innovation ensures constant growth and staying ahead of industry trends."',
+      image: AvatarImage,
+    },
+    {
+      name: "John Doe",
+      role: "Machine Learning Specialist",
+      quote:
+        '"The culture here is both supportive and stimulating, with talented professionals who push boundaries and share insights. A strong focus on innovation ensures constant growth and staying ahead of industry trends."',
+      image: AvatarImage,
+    },
+    {
+      name: "John Doe",
+      role: "Machine Learning Specialist",
+      quote:
+        '"The culture here is both supportive and stimulating, with talented professionals who push boundaries and share insights. A strong focus on innovation ensures constant growth and staying ahead of industry trends."',
+      image: AvatarImage,
+    },
+    {
+      name: "John Doe",
+      role: "Machine Learning Specialist",
+      quote:
+        '"The culture here is both supportive and stimulating, with talented professionals who push boundaries and share insights. A strong focus on innovation ensures constant growth and staying ahead of industry trends."',
+      image: AvatarImage,
+    },
+    {
+      name: "John Doe",
+      role: "Machine Learning Specialist",
+      quote:
+        '"The culture here is both supportive and stimulating, with talented professionals who push boundaries and share insights. A strong focus on innovation ensures constant growth and staying ahead of industry trends."',
+      image: AvatarImage,
+    },
+    {
+      name: "John Doe",
+      role: "Machine Learning Specialist",
+      quote:
+        '"The culture here is both supportive and stimulating, with talented professionals who push boundaries and share insights. A strong focus on innovation ensures constant growth and staying ahead of industry trends."',
+      image: AvatarImage,
+    },
+    {
+      name: "John Doe",
+      role: "Machine Learning Specialist",
+      quote:
+        '"The culture here is both supportive and stimulating, with talented professionals who push boundaries and share insights. A strong focus on innovation ensures constant growth and staying ahead of industry trends."',
+      image: AvatarImage,
+    },
+    {
+      name: "John Doe",
+      role: "Machine Learning Specialist",
+      quote:
+        '"The culture here is both supportive and stimulating, with talented professionals who push boundaries and share insights. A strong focus on innovation ensures constant growth and staying ahead of industry trends."',
+      image: AvatarImage,
+    },
   ];
 
   return (
     <div className="relative text-white min-h-screen flex flex-col ml-[10px]">
-      <div className="flex relative justify-center gap-6 w-[75%] top-[100px] z-0">
+      <div
+        className="flex relative justify-center gap-6 w-[75%] top-[100px] z-0 "
+        // style={{
+        //   whiteSpace: "nowrap",
+        //   scrollbarWidth: "none",
+        //   msOverflowStyle: "none",
+        // }}
+      >
         {data.map((item, index) => (
           <div key={index} className="flex-1 min-w-[300px] max-w-[400px]">
             <div className="bg-gray-800 rounded-[22px] p-6 h-full flex flex-col border-[1px] border-gray-600">

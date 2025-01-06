@@ -1,40 +1,42 @@
-import { useRef } from "react";
-import PropTypes from 'prop-types';
-const DynamicConnectors = ({ positions }) => {
-  const svgRef = useRef(null);
+import { useState, useRef } from 'react';
 
-  const calculatePath = (start, end) => {
-    return `M${start.x},${start.y} C${start.x},${(start.y + end.y) / 2} ${end.x},${(start.y + end.y) / 2} ${end.x},${end.y}`;
+const DynamicLine = () => {
+  const [scrollX, setScrollX] = useState(0);
+  const containerRef = useRef(null);
+
+  const handleScroll = () => {
+    const newScrollX = containerRef.current.scrollLeft;
+    setScrollX(newScrollX);
+  };
+
+  const generatePath = () => {
+    // const start = 77;
+    const control = Math.max(72, 72 + scrollX * 0.2); // Adjust curve dynamically
+    const end = Math.min(92, 92 - scrollX * 0.1);    // Adjust curve dynamically
+    return `M77 0 V${control} C77 ${control + 11} ${68 - scrollX / 10} ${end} 57 ${end} H29`;
   };
 
   return (
-    <svg ref={svgRef} width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0, zIndex: -1 }}>
-      {positions.map((pos, index) => (
+    <div
+      ref={containerRef}
+      onScroll={handleScroll}
+      style={{
+        width: '100%',
+        overflowX: 'scroll',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <svg width="78" height="177" style={{ display: 'inline-block' }}>
         <path
-          key={index}
-          d={calculatePath(pos.start, pos.end)}
+          d={generatePath()}
           stroke="#007BFF"
-          strokeWidth="2"
+          strokeWidth="1.5"
           fill="none"
         />
-      ))}
-    </svg>
+        <ellipse cx="8.92562" cy="168" rx="8.92562" ry="9" fill="#007BFF" />
+      </svg>
+    </div>
   );
 };
 
-DynamicConnectors.propTypes = {
-  positions: PropTypes.arrayOf(
-    PropTypes.shape({
-      start: PropTypes.shape({
-        x: PropTypes.number.isRequired,
-        y: PropTypes.number.isRequired,
-      }).isRequired,
-      end: PropTypes.shape({
-        x: PropTypes.number.isRequired,
-        y: PropTypes.number.isRequired,
-      }).isRequired,
-    })
-  ).isRequired,
-};
-
-export default DynamicConnectors;
+export default DynamicLine;
